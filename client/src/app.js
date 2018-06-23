@@ -7,6 +7,7 @@ import { BrowserRouter, Router } from "react-router-dom";
 import "normalize.css/normalize.css";
 import "./styles/styles.scss";
 import "materialize-css/dist/css/materialize.min.css";
+import axios from "axios"
 
 const store = configureStore();
 const jsx = (

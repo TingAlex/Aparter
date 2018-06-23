@@ -8,34 +8,38 @@ class Header extends React.Component {
         return;
       case false:
         return [
-          <li>
+          <li key="1">
             <Link to="/rankList">Rank List</Link>
           </li>,
-          <li>
-            <a href="/api/login">Login</a>
+          <li key="2">
+            <Link to="/gallery">Gallery</Link>
           </li>,
-          <li>
-            <a href="/api/signup">Sign up</a>
+          <li key="3">
+            <Link to="/login">Login</Link>
+          </li>,
+          <li key="4">
+            <Link to="/signup">Sign up</Link>
           </li>
         ];
-        default:
-        return[
-        <li>
+      default:
+        return [
+          <li key="1">
             <Link to="/rankList">Rank List</Link>
           </li>,
-          <li>
-            <a href="/api/credit">Credit</a>
+          <li key="2">
+            <Link to="/gallery">Gallery</Link>
           </li>,
-          <li>
-            <a href="/api/solved">Solved</a>
+          <li key="3">
+            <Link to="/credit">Credit</Link>
           </li>,
-          <li>
-            <a href="#">{this.props.auth.user.userName}</a>
+          <li key="4">
+            <Link to="/solved">Solved</Link>
           </li>,
-          <li>
+          <li key="5">{this.props.auth.userName}</li>,
+          <li key="6">
             <a href="/api/logout">Logout</a>
-          </li>,
-        ]
+          </li>
+        ];
     }
   }
   render() {
@@ -51,17 +55,6 @@ class Header extends React.Component {
     );
   }
 }
-// const Header = () => (
-//   <header>
-//     <h1>Aparter</h1>
-//     <NavLink exact to="/gallery" activeClassName="is-active">
-//       Gallery
-//     </NavLink>
-//     <NavLink exact to="/dashboard" activeClassName="is-active">
-//       Dashboard
-//     </NavLink>
-//   </header>
-// );
 
 const mapStateToProps = ({ auth }) => {
   return { auth };

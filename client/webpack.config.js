@@ -24,6 +24,19 @@ module.exports = {
   },
   devtool: "cheap-module-eval-source-map",
   devServer: {
-    contentBase: path.join(__dirname, "public")
+    contentBase: path.join(__dirname, "public"),
+    historyApiFallback: true,
+    proxy: {
+      "/api/*": {
+        target: "http://localhost:5000",
+        changeOrigin: true,
+        secure: false
+      },
+      "/images/*": {
+        target: "http://localhost:5000",
+        changeOrigin: true,
+        secure: false
+      }
+    }
   }
 };
