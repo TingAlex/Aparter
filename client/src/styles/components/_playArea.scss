@@ -1,0 +1,22 @@
+.playArea {
+  margin: auto 0;
+  width: 70;
+  text-align: center;
+}
+
+.cell {
+  width: 33.3%;
+  border: -1rem 0;
+  float: left;
+}
+
+.pic {
+  width: 33.3%;
+  float: left;
+}
+
+.pic_empty {
+  width: 33.3%;
+  float: left;
+  padding-top: 33.3%;
+}

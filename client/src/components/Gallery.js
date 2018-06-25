@@ -15,25 +15,34 @@ class Gallery extends React.Component {
         return (
           <div>
             {arr.picList.map(item => {
-              const path = "/public/images/origin/" + item.picName + ".png";
-              return <img key={item.picName} src={path} alt="" height="300" />;
+              const path = "/images/origin/" + item.picName + ".png";
+              return (
+                <img
+                  key={item.picName}
+                  src={path}
+                  alt=""
+                  height="300"
+                  onClick={() => {
+                    this.props.setPlayPic(item.picName);
+                  }}
+                />
+              );
             })}
           </div>
         );
     }
   }
   render() {
-    return <div>
+    return (
+      <div>
         <h1>Gallery part</h1>
-        <img src={"/public/images/test.png"} alt="" height="300" />
         {this.renderContent()}
-      </div>;
+      </div>
+    );
   }
 }
 
 const mapStateToProps = state => {
-  console.log("state is " + JSON.stringify(state));
-
   return state;
 };
 

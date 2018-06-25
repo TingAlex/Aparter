@@ -30,9 +30,32 @@ export const submitSignup = (value, history) => async dispatch => {
 
 export const fetchPics = () => async dispatch => {
   const res = await axios.get("/api/game_pics");
-  console.log("recive pics " + JSON.stringify(res.data));
   dispatch({
     type: "FETCH_PICS",
     payload: res.data
+  });
+};
+
+export const setPlayPic = picName => dispatch => {
+  dispatch({
+    type: "SET_PLAYPIC",
+    payload: {
+      picName
+    }
+  });
+};
+
+export const reArrange = index => dispatch => {
+  dispatch({
+    type: "MOVE_PIC",
+    payload: {
+      index
+    }
+  });
+};
+
+export const readyPlay = () => dispatch => {
+  dispatch({
+    type: "READY_PLAY"
   });
 };

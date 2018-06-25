@@ -63,6 +63,25 @@ function readDir(path) {
     }
   });
 }
+
+// function processPics(path) {
+//   Jimp.read("./public/images/origin/" + path, function(err, image) {
+//     if (err) throw err;
+//     const len = 300;
+//     let tempPic = image.clone().cover(len * 3, len * 3);
+//     tempPic.write("./public/images/" + path);
+//   });
+// }
+// function readDir(path) {
+//   let pa = fs.readdirSync(path);
+//   pa.forEach(function(ele, index) {
+//     let info = fs.statSync(path + "/" + ele);
+//     if (info.isFile()) {
+//       processPics(ele);
+//     }
+//   });
+// }
+
 //***Only used when processing original pictures!!*******
 // readDir(path.join(__dirname, "public/images/origin/"));
 

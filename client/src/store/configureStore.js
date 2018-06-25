@@ -1,6 +1,7 @@
 import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 import authReducer from "../reducers/authReducer";
 import gameReducer from "../reducers/gameReducer";
+
 import reduxThunk from "redux-thunk";
 import { reducer as reduxForm } from "redux-form";
 export default () => {
