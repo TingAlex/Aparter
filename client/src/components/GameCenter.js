@@ -8,6 +8,10 @@ class GameCenter extends React.Component {
   }
 
   renderNewContent() {
+    console.log("renderContent");
+    if (this.props.game && this.props.game.success) {
+      this.props.addCredit(this.props.game.credit);
+    }
     switch (this.props.game) {
       case null:
         return;
@@ -35,16 +39,64 @@ class GameCenter extends React.Component {
         });
     }
   }
+
   render() {
     return (
       <div>
-        <h1>GameCenter part</h1>
-        <button className="btn waves-effect" onClick={this.props.readyPlay}>
-          Play
-        </button>
         <div className="container">
+          <br />
           <div className="row">
-            <div className="col s6 offset-s3">{this.renderNewContent()}</div>
+            <div className="col m6">
+              {this.renderNewContent()}
+              <div className="row">
+                <div className="col s12">&nbsp;</div>
+              </div>
+            </div>
+            <div className="col m6">
+              <div className="row">
+                <div className="col s6 offset-s3">
+                  {this.props.game &&
+                    this.props.game.picName && (
+                      <img
+                        key={this.props.game.picName}
+                        src={
+                          "/images/origin/" + this.props.game.picName + ".png"
+                        }
+                        className="pic_gameCenter"
+                        alt=""
+                      />
+                    )}
+                </div>
+              </div>
+              <div className="row">
+                <div className="col  s6 offset-s3">
+                  <button
+                    className="btn waves-effect"
+                    onClick={this.props.readyPlay}
+                  >
+                    Play
+                  </button>
+                </div>
+                <div className="col  s6 offset-s3">
+                  Move:{this.props.game &&
+                  this.props.game.move &&
+                  this.props.game.move !== 0
+                    ? this.props.game.move
+                    : "0"}
+                </div>
+                <div className="col  s6 offset-s3">
+                  Credit:{this.props.game &&
+                  this.props.game.credit &&
+                  this.props.game.credit !== 0
+                    ? this.props.game.credit
+                    : "Unknown"}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="row">
+            亲爱的老朱~这是一个简单的教程：点击play按钮开始游戏，拼成功会加credit积分（当然前提是登陆了）点击Gallery进入选择图片页面，选择好图片后点击Aparter进入游戏页面，点击Rank
+            List进入排行榜，还提供登陆注册功能~ 玩的开心~~
           </div>
         </div>
       </div>

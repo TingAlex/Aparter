@@ -30,10 +30,7 @@ class Header extends React.Component {
             <Link to="/gallery">Gallery</Link>
           </li>,
           <li key="3">
-            <Link to="/credit">Credit</Link>
-          </li>,
-          <li key="4">
-            <Link to="/solved">Solved</Link>
+            <Link to="/credit">Credit&nbsp;{this.props.auth.credit}</Link>
           </li>,
           <li key="5">{this.props.auth.userName}</li>,
           <li key="6">
@@ -60,3 +57,7 @@ const mapStateToProps = ({ auth }) => {
   return { auth };
 };
 export default connect(mapStateToProps)(Header);
+
+// <li key="4">
+//             <Link to="/solved">Solved</Link>
+//           </li>,

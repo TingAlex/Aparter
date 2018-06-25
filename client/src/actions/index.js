@@ -13,7 +13,7 @@ export const submitLogin = (value, history) => async dispatch => {
   const res = await axios.post("/api/login", value);
   if (res.data.message) {
     // dispatch({ type: "LOGIN_ERROR", payload: res.data });
-    console.log("error message " + res.data.message);
+    alert("error message: " + res.data.message);
   } else {
     history.push("/");
     dispatch({ type: "FETCH_USER", payload: res.data });
@@ -32,6 +32,14 @@ export const fetchPics = () => async dispatch => {
   const res = await axios.get("/api/game_pics");
   dispatch({
     type: "FETCH_PICS",
+    payload: res.data
+  });
+};
+
+export const fetchWinlist = () => async dispatch => {
+  const res = await axios.get("/api/win_list");
+  dispatch({
+    type: "FETCH_WIN_LIST",
     payload: res.data
   });
 };
@@ -58,4 +66,10 @@ export const readyPlay = () => dispatch => {
   dispatch({
     type: "READY_PLAY"
   });
+};
+
+export const addCredit = credit => async dispatch => {
+  const res = await axios.post("/api/addCredit", { credit: credit });
+  dispatch({ type: "FINISH_ADD_CREDIT" });
+  dispatch({ type: "FETCH_USER", payload: res.data });
 };

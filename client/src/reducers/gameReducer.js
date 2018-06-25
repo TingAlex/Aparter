@@ -11,7 +11,9 @@ const gameReducer = (state = null, action) => {
           picName: action.payload.picList[0].picName,
           arrange: [0, 1, 2, 3, 4, 5, 6, 7, 8],
           hideIndex: 8,
-          stop: true
+          stop: true,
+          move: 0,
+          credit: 0
         };
       }
     case "SET_PLAYPIC":
@@ -21,7 +23,9 @@ const gameReducer = (state = null, action) => {
         ...action.payload,
         arrange: arrange,
         hideIndex: 8,
-        stop: true
+        stop: true,
+        move: 0,
+        credit: 0
       };
     case "READY_PLAY":
       if (true) {
@@ -30,7 +34,7 @@ const gameReducer = (state = null, action) => {
         let nextArrange = state.arrange;
         let temp = 0;
         let flag = 0;
-        for (let i = 0; i < 100; i++) {
+        for (let i = 0; i < 10; i++) {
           readyArrange[i] = Math.floor(Math.random() * 4);
           flag = 0;
           switch (readyArrange[i]) {
@@ -68,7 +72,14 @@ const gameReducer = (state = null, action) => {
         }
         console.log("random move: " + readyArrange);
 
-        return { ...state, stop: false, arrange: nextArrange, hideIndex };
+        return {
+          ...state,
+          stop: false,
+          arrange: nextArrange,
+          hideIndex,
+          move: 0,
+          credit: 0
+        };
       }
 
     case "MOVE_PIC":
@@ -96,9 +107,33 @@ const gameReducer = (state = null, action) => {
         nextArrange[state.hideIndex] = nextArrange[index];
         nextArrange[index] = temp;
         hideIndex = index;
-        return { ...state, arrange: nextArrange, hideIndex: hideIndex };
+        let flag = true;
+        for (let i = 0; i < 9; i++) {
+          if (nextArrange[i] !== i) {
+            flag = false;
+            break;
+          }
+        }
+        let stop = state.stop;
+        if (flag === true) {
+          stop = true;
+        }
+        let result = 300 - 10 * state.move;
+        if (result < 0) {
+          result = 0;
+        }
+        return {
+          ...state,
+          arrange: nextArrange,
+          hideIndex: hideIndex,
+          move: state.move + 1,
+          credit: flag ? result : 0,
+          success: flag,
+          stop: stop
+        };
       }
-
+    case "FINISH_ADD_CREDIT":
+      return { ...state, success: false };
     default:
       return state;
   }
