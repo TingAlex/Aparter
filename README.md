@@ -29,7 +29,7 @@ mongoose.model("users", userSchema);
 ```
 ### 项目结构
 项目分为client与server两个部分。Client部分都存在于client文件夹下。其余为server部分。
-（这里插入图片）
+![Structure image](https://cl.ly/d3ade71d2e14/structure.png)
 
 ### 功能设计
 #### 用户注册/登陆/登出
@@ -37,9 +37,13 @@ mongoose.model("users", userSchema);
 
 #### Gallery选择游戏素材
 用户可以从我们提供的素材列表中选择自己喜欢的小姐姐进行拼图游戏。被选择的小姐姐图片上的按钮中会显示对号，未选择的为加号。
+![Structure image](https://cl.ly/3371d7404c5b/gallery%20-%20%E5%89%AF%E6%9C%AC.png)
+
 
 #### GameCenter进行游戏
 用户选择好小姐姐后可以点击Play按钮开始进行游戏，我们会为用户进行图片的重新排列，为了让游戏比较简单，我们只为拼图顺序进行了小部分改动。拼图成功后会显示本局获得的credit，同时异步为用户的credit总成绩加分。
+![Structure image](https://cl.ly/c02573fa5a1f/game_play.png)
 
 #### RankList查看分数榜
 这个页面显示总分数前十的用户，根据分数值倒序排列。
+![Structure image](https://cl.ly/f9ddcf78340f/rank_list.png)
